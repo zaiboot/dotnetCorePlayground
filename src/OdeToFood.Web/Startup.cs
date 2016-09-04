@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,21 +12,6 @@ namespace OdeToFood.Web
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     internal sealed class Startup
     {
-        private IConfigurationRoot _appSettingsConfiguration;
-
-        private void BuildAppSettings(IHostingEnvironment env)
-        {
-            var path = Path.Combine(
-                env.ContentRootPath,
-                @"configs", //to avoid directory separator.
-                "appsettings.json");
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile(path);
-                
-            _appSettingsConfiguration = builder.Build();
-        }
-
-        
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
@@ -40,7 +24,7 @@ namespace OdeToFood.Web
             IHostingEnvironment env, ILoggerFactory loggerFactory,
             IAppSettings appSettings )
         {
-            BuildAppSettings(env);
+            
             loggerFactory.AddConsole();
 
             if (env.IsDevelopment())
