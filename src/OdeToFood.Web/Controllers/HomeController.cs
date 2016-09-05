@@ -2,7 +2,7 @@
 
 namespace OdeToFood.Web.Controllers
 {
-    internal class HomeController
+    public class HomeController
     {
         private readonly IAppSettings _appSettings;
 

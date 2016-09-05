@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace OdeToFood.Web.Services
 {
-    internal class AppSettings : IAppSettings
+    public class AppSettings : IAppSettings
     {
         private readonly string _helloWorldText;
         private readonly string _helloWorldFromController;

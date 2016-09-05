@@ -1,6 +1,6 @@
 ﻿namespace OdeToFood.Web.Services
 {
-    internal interface IAppSettings
+    public interface IAppSettings
     {
         string GetHelloWorldText();
         string GetHelloWorldFromController();

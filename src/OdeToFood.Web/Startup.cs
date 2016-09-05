@@ -37,7 +37,7 @@ namespace OdeToFood.Web
                 //    .UseStaticFiles()
                 .UseFileServer() //use file server is a direct replacement to call default and then static
                .UseWelcomePage("/hello")
-            //   .UseMvcWithDefaultRoute( new 
+               .UseMvcWithDefaultRoute()
 
             .Run(async (context) =>
             {
