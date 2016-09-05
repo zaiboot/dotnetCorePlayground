@@ -7,6 +7,8 @@ namespace OdeToFood.Web.Services
     internal class AppSettings : IAppSettings
     {
         private readonly string _helloWorldText;
+        private readonly string _helloWorldFromController;
+
         public AppSettings(IHostingEnvironment env)
         {
 
@@ -19,10 +21,17 @@ namespace OdeToFood.Web.Services
 
             var configuration = builder.Build();
             _helloWorldText = configuration["hello-world-text"];
+            _helloWorldFromController = configuration["hello-world-from-controller"];
         }
         public string GetHelloWorldText()
         {
             return _helloWorldText;
+        }
+
+        public string GetHelloWorldFromController()
+        {
+
+            return _helloWorldFromController;
         }
     }
 }

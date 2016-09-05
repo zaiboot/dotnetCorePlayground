@@ -12,6 +12,8 @@ namespace OdeToFood.Web
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+               // .UseWebRoot("wwwroot")
+            //    .UseEnvironment(EnvironmentName.Production)
                 .Build();
 
             host.Run();

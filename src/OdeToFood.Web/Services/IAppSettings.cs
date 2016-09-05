@@ -3,5 +3,6 @@
     internal interface IAppSettings
     {
         string GetHelloWorldText();
+        string GetHelloWorldFromController();
     }
 }
