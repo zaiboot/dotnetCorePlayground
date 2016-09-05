@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.CSharp.RuntimeBinder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -37,12 +38,19 @@ namespace OdeToFood.Web
                 //    .UseStaticFiles()
                 .UseFileServer() //use file server is a direct replacement to call default and then static
                .UseWelcomePage("/hello")
-               .UseMvcWithDefaultRoute()
+               .UseMvc(ConfigureRoutes)
 
             .Run(async (context) =>
             {
                 await context.Response.WriteAsync(appSettings.GetHelloWorldText());
             });
+        }
+
+        private static void ConfigureRoutes(IRouteBuilder routeBuilder)
+        {
+            routeBuilder.MapRoute("Default", "{controller=Home}/{action=Index}/{id?}");
+
+
         }
     }
 }
