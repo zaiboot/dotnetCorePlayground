@@ -18,6 +18,7 @@ namespace OdeToFood.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IAppSettings, AppSettings>();
+            services.AddScoped<IRestaurantService, RestaurantServiceInMemory>();
             services.AddMvc();
         }
 
