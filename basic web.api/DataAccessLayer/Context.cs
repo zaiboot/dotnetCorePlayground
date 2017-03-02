@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer
 {
-    public class BasicWebApiContext : DbContext
+    public class BasicWebApiContext : DbContext, IBasicWebApi
     {
         public BasicWebApiContext(DbContextOptions<BasicWebApiContext> options)
             : base(options)

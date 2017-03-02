@@ -36,6 +36,7 @@ namespace WebApi
             services.AddDbContext<BasicWebApiContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WebApi-Demo")));
             services.AddTransient<IBasicBussinesLogicLayer, BasicBussinesLogicLayer>();
+            services.AddTransient<IBasicWebApi, BasicWebApiContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
