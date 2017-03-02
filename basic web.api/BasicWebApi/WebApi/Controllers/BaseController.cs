@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace WebApi.Controllers
 {
@@ -7,9 +8,7 @@ namespace WebApi.Controllers
     {
         protected readonly IMapper Mapper;
 
-       
-
-        public BaseController(IMapper mapper)
+        public BaseController(IMapper mapper, ILogger<BaseController> logger)
         {
             Mapper = mapper;
         }

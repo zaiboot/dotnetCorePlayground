@@ -4,6 +4,7 @@ using AutoMapper;
 using BussinessLayer.Interfaces;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApi.ViewModels;
 
 namespace WebApi.Controllers
@@ -13,7 +14,7 @@ namespace WebApi.Controllers
     {
         private readonly IBasicBussinesLogicLayer _bll;
 
-        public BasicController(IBasicBussinesLogicLayer bll , IMapper mapper): base(mapper)
+        public BasicController(IBasicBussinesLogicLayer bll , IMapper mapper, ILogger<BasicController> logger) : base(mapper, logger)
         {
             _bll = bll;
         }
