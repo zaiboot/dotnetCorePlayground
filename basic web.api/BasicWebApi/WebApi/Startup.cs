@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using BussinessLayer.Interfaces;
 using BussinessLayer.Implementations;
+using BussinessLayer.Implementations.EntityFrameworkCore;
 
 
 namespace WebApi
