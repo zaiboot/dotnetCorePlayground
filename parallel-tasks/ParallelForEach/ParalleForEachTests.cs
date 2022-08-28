@@ -83,24 +83,24 @@ class ParalleForEachTests
 
   public void Main()
   {
-    var range = Enumerable.Range(1, 500).ToList();
+    var range = Enumerable.Range(1, 10).ToList();
 
     // ParallelFor falls under the Data Parallelism area. From MSDN
     //Data parallelism refers to scenarios in which the same operation is performed concurrently (that is, in parallel) on elements in a source collection or array. In data parallel operations, the source collection is partitioned so that multiple threads can operate on different segments concurrently.
-    // DoBasicParallelForEach(range);
-    // DoBasicParallelForEachWithErrorHandling(range);
+    DoBasicParallelForEach(range);
+    DoBasicParallelForEachWithErrorHandling(range);
 
-    // Console.WriteLine("Now using a Cancellation of no more than 1 sec");
-    // //To cancel ParallelFor, use cancellationToken and paralleloptions
-    // var sourceWithTimeOut = new CancellationTokenSource(1_000); //Whole task mustn't take more than 1 sec
+    Console.WriteLine("Now using a Cancellation of no more than 1 sec");
+    //To cancel ParallelFor, use cancellationToken and paralleloptions
+    var sourceWithTimeOut = new CancellationTokenSource(1_000); //Whole task mustn't take more than 1 sec
 
-    // sourceWithTimeOut.Token.Register(() =>
-    //   {
-    //     Console.WriteLine("Good good, operation was cancelled handling when the operation was stopped, can help free resources");
-    //     Console.WriteLine("However we do not know how many records were processed, do we care? ");
-    //   });
-    // var token = sourceWithTimeOut.Token;
-    // DoBasicParallelForEachWithCancellation(range, token);
+    sourceWithTimeOut.Token.Register(() =>
+      {
+        Console.WriteLine("Good good, operation was cancelled handling when the operation was stopped, can help free resources");
+        Console.WriteLine("However we do not know how many records were processed, do we care? ");
+      });
+    var token = sourceWithTimeOut.Token;
+    DoBasicParallelForEachWithCancellation(range, token);
 
     var manualSource = new CancellationTokenSource();
     manualSource.Token.Register(() =>
@@ -109,8 +109,10 @@ class ParalleForEachTests
     });
 
     Console.WriteLine("Manual stopping, not due to timeout but when the index %3 == 0");
+    range = Enumerable.Range(1, 500).ToList();
     DoBasicParallelForEachWithManualCancellation(range, manualSource.Token);
-
+    Console.WriteLine("Remember: We use partitions here, that's why we need to stop the process 4 times");
+    Console.WriteLine("\tThis is calculation on your hardware arch and resources.");
     Console.WriteLine("And remember to always process small collections with TPL parallel.ForEach.");
     Console.WriteLine("For bigger stuffs, look at Tasks, async/await.");
   }
