@@ -1,9 +1,9 @@
 namespace Main.DTO;
 public class Transaction
 {
-  public string TransactionId { get; set; }
-  public decimal Tax { get; set; }
-  public decimal Debit  { get; set; }
+  public int TransactionId { get; set; }
+  public double Tax { get; set; }
+  public double Debit  { get; set; }
 
-  public decimal Total => Tax + Debit;
+  public double Total => Tax + Debit;
 }

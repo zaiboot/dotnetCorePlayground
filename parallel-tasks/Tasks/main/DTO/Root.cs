@@ -23,7 +23,7 @@ public class Root
 
   }
 
-  public void AddTransaction(string userId, string txid, decimal debit, decimal tax)
+  public void AddTransaction(string userId, int txid, double debit, double tax)
   {
     if (!_userIds.Contains(userId))
     {

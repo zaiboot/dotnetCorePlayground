@@ -16,10 +16,16 @@ public class Logic
     }
   }
 
-  public static void BuildRootSingleRow(IDataReader reader){
-    var userId = reader.Get<string>("id");
-    var username = reader.Get<string>("username");
+  public static void BuildRootSingleRow(IDataReader reader)
+  {
+    var userId = reader.GetClass<string>("id");
+    var username = reader.GetClass<string>("username");
     r.AddUser(userId, username);
+
+    var txid = reader.Get<int>("trx_id");
+    var debit = reader.Get<double>("debit");
+    var tax = reader.Get<double>("tax");
+    r.AddTransaction(userId, txid, debit, tax);
   }
 
 }

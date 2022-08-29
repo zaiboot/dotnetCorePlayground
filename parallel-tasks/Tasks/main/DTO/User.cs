@@ -2,8 +2,8 @@ namespace Main.DTO;
 
 public class User
 {
-  private readonly Dictionary<string, Transaction> _transactions = new();
-  private readonly HashSet<string> _txIds = new();
+  private readonly Dictionary<int, Transaction> _transactions = new();
+  private readonly HashSet<int> _txIds = new();
   public string Username { get; }
 
   public User(string username)
@@ -11,7 +11,7 @@ public class User
     Username = username;
   }
 
-  public void AddTransaction(string txid, decimal debit, decimal tax)
+  public void AddTransaction(int txid, double debit, double tax)
   {
     if (_txIds.Contains(txid))
     {
