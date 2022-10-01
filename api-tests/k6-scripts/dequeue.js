@@ -28,14 +28,16 @@ export const options = {
 // so this should run during 30s, simulating 10 users. Taking into account, the sleep(1)
 // The number of http calls can be expressed as:
 // MAX = VUS*DURATION, in this case 300
+const port = 5020;
+const hostname = `${__ENV.HOST_NAME}`; //'host.docker.internal' || 'localhost';
 
 export default function () {
   // our HTTP request, note that we are saving the response to res, which can be accessed later
-  const port = 5020;
-  const url = `http://localhost:${port}/api/Queue/`;
+
+  const url = `http://${hostname}:${port}/api/Queue/`;
   const res = http.get(url);
   sleep(0.3);
-  const checkRes = check(res, {
+  check(res, {
     'status is 204': (r) => r.status == 204,
     'response body': (r) => r.status == 200 && !isNaN(parseInt(r.body)),
   });
