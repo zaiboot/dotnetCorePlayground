@@ -5,9 +5,8 @@ public static class Routes
     public static WebApplication MapRoutes(this WebApplication app)
     {
         app.MapGet("api/Queue/",
-          (ConcurrentQueue<int> _queue, ILoggerFactory loggerFactory) =>
+          (ConcurrentQueue<int> _queue, ILogger<Program> _logger ) =>
         {
-            var _logger = loggerFactory.CreateLogger("Queue");
             int? result = null;
             if (_queue.TryDequeue(out var result1))
             {
@@ -18,10 +17,8 @@ public static class Routes
         });
 
         app.MapPut("api/Queue/{number}",
-          (int number, ConcurrentQueue<int> _queue, ILoggerFactory loggerFactory) =>
+          (int number, ConcurrentQueue<int> _queue,  ILogger<Program> _logger) =>
         {
-            var _logger = loggerFactory.CreateLogger("DeQueue");
-
             _queue.Enqueue(number);
             _logger.LogDebug($"{number} added , count= {_queue.Count}");
         });
