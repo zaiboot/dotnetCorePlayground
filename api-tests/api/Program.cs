@@ -1,7 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using Api.Routing;
+using Api.Infra;
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+});
 
 // Add services to the container.
-
+builder.Services.RegisterDependencies();
 builder.Services.AddControllers();
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -9,9 +14,7 @@ builder.Logging.AddConsole();
 // removing for the moment
 // builder.Services.AddEndpointsApiExplorer();
 // builder.Services.AddSwaggerGen();
-
+builder.WebHost.UseUrls("http://localhost:5020");
 var app = builder.Build();
-
-app.MapControllers();
-Console.WriteLine("PID {0}", Environment.ProcessId);
+app.MapRoutes();
 app.Run();

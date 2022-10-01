@@ -1,7 +1,6 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 import { Counter } from 'k6/metrics';
-import { SharedArray } from 'k6/data';
 
 export const requests = new Counter('http_reqs');
 
