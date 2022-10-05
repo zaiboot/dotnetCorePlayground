@@ -43,23 +43,3 @@ func (c *Queue) Size() int {
 func (c *Queue) Empty() bool {
 	return c.count == 0
 }
-
-// func main1() {
-// 	customQueue := &queue{
-// 		queue: make([]string, 0),
-// 	}
-
-// 	fmt.Printf("Enqueue: A\n")
-// 	customQueue.Enqueue("A")
-// 	fmt.Printf("Enqueue: B\n")
-// 	customQueue.Enqueue("B")
-// 	fmt.Printf("Len: %d\n", customQueue.Size())
-
-// 	for customQueue.Size() > 0 {
-
-// 		fmt.Printf("Front: %s\n", frontVal)
-// 		fmt.Printf("Dequeue: %s\n", frontVal)
-// 		customQueue.Dequeue()
-// 	}
-// 	fmt.Printf("Len: %d\n", customQueue.Size())
-// }
