@@ -23,7 +23,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "myinfluxdb",
+      "datasource": "k6go",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -295,7 +295,7 @@
     ]
   },
   "timezone": "",
-  "title": "k6 performance test",
+  "title": "k6 performance test - golang",
   "uid": "Le2Ku9NMk",
   "version": 2
 }

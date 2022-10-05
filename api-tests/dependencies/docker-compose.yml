@@ -10,8 +10,8 @@ services:
     image: influxdb:1.8
     networks:
       - metrics
-    environment:
-      - INFLUXDB_DB=k6
+    volumes:
+      - ./influx_init.iql:/docker-entrypoint-initdb.d/influx_init.iql/
 
   grafana:
     hostname: grafana
@@ -29,17 +29,3 @@ services:
       - GF_AUTH_BASIC_ENABLED=false
     volumes:
       - ./grafana:/etc/grafana/provisioning/
-
-  # k6:
-  #   image: grafana/k6:latest
-  #   networks:
-  #     - k6
-  #   ports:
-  #     - "6565:6565"
-  #   command: "run -a 'localhost:6001' /scripts/dequeue.js"
-  #   environment:
-  #     - K6_OUT=influxdb=http://influxdb:8086/k6
-  #   depends_on:
-  #     - influxdb
-  #   volumes:
-  #     - ../k6-scripts:/scripts
