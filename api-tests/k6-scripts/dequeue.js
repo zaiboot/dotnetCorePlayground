@@ -28,7 +28,7 @@ export const options = {
 // so this should run during 30s, simulating 10 users. Taking into account, the sleep(1)
 // The number of http calls can be expressed as:
 // MAX = VUS*DURATION, in this case 300
-const port = 5020;
+const port = `${__ENV.PORT_API}`;
 const hostname = `${__ENV.HOST_NAME}`; //'host.docker.internal' || 'localhost';
 
 export default function () {

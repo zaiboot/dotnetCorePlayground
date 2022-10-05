@@ -24,7 +24,7 @@ export const options = {
     { duration: '10s', target: 0 },
   ],
 };
-const port = 5020;
+const port = `${__ENV.PORT_API}`;
 const hostname = `${__ENV.HOST_NAME}`;
 
 

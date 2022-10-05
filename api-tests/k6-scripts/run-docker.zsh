@@ -1,9 +1,11 @@
-docker run -d --rm --network 'dependencies_metrics' \
-  --env-file=.env \
-  -v $(pwd):/scripts \
-  grafana/k6:latest run -a 'localhost:6001' /scripts/queue.js
+ docker run -d --rm --network 'dependencies_metrics' \
+   --name queuer_go \
+   --env-file=golang.env \
+   -v $(pwd):/scripts \
+   grafana/k6:latest run /scripts/queue.js
 
 docker run -d --rm --network 'dependencies_metrics' \
-  --env-file=.env \
+  --name dequeuer_go \
+  --env-file=golang.env \
   -v $(pwd):/scripts \
-  grafana/k6:latest run -a 'localhost:6001' /scripts/dequeue.js
+  grafana/k6:latest run /scripts/dequeue.js
