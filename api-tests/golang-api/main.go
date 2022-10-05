@@ -2,14 +2,15 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"zaiboot/golang/collections"
 
 	"github.com/gorilla/mux"
 )
 
-var cq *Queue
+var cq *collections.Queue
 
 func createNewItem(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
@@ -23,7 +24,7 @@ func getSingleItem(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNoContent)
 	} else {
 		w.WriteHeader(http.StatusOK)
-		fmt.Print(w, item)
+		w.Write([]byte(item))
 	}
 }
 
@@ -31,12 +32,11 @@ func handleRequests() {
 	myRouter := mux.NewRouter()
 	myRouter.HandleFunc("/api/Queue", getSingleItem).Methods("GET")
 	myRouter.HandleFunc("/api/Queue/{id}", createNewItem).Methods("PUT")
-	log.Fatal(http.ListenAndServe(":6020", myRouter))
+	port := os.Getenv("PORT")
+	log.Fatal(http.ListenAndServe(":"+port, myRouter))
 }
 
 func main() {
-	cq = &Queue{
-		queue: make([]string, 0),
-	}
+	cq = collections.New()
 	handleRequests()
 }

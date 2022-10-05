@@ -1,4 +1,4 @@
-module zaiboot/golang-example
+module zaiboot/golang
 
 go 1.19
 
