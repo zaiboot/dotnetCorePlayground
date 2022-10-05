@@ -10,7 +10,7 @@ import (
 
 var cq *collections.Queue[string] = collections.NewQueue[string]()
 
-func CreateNewItem(w http.ResponseWriter, r *http.Request) {
+func createNewItem(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
 	cq.Enqueue(id)
@@ -20,7 +20,7 @@ func CreateNewItem(w http.ResponseWriter, r *http.Request) {
 		Msg("Adding new Id")
 }
 
-func GetSingleItem(w http.ResponseWriter, r *http.Request) {
+func getSingleItem(w http.ResponseWriter, r *http.Request) {
 	logger := hlog.FromRequest(r).Debug()
 	item, err := cq.Dequeue()
 
