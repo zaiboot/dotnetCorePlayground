@@ -23,7 +23,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "k6go",
+      "datasource": "golang",
       "fieldConfig": {
         "defaults": {
           "custom": {}

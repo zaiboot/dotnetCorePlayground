@@ -23,7 +23,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "k6dotnet",
+      "datasource": "dotnet",
       "fieldConfig": {
         "defaults": {
           "custom": {}
