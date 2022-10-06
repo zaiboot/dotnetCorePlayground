@@ -7,7 +7,7 @@ import (
 )
 
 func InitLog() zerolog.Logger {
-	zerolog.SetGlobalLevel(zerolog.DebugLevel)
+	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	log := zerolog.New(os.Stdout).With().
 		Timestamp().
 		Str("appName", "golang-api").
