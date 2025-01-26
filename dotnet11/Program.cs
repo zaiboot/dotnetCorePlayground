@@ -1,0 +1,2 @@
+﻿NumberExperiments.ProcessNumbers();
+NumberExperiments.AddAllValues();
